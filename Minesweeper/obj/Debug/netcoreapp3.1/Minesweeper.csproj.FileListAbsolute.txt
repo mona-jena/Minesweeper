@@ -1,0 +1,10 @@
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.csprojAssemblyReference.cache
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.AssemblyInfoInputs.cache
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.AssemblyInfo.cs
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.csproj.CoreCompileInputs.cache
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Minesweeper.deps.json
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Minesweeper.dll
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Minesweeper.pdb
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.dll
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.pdb
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Mines.csv
