@@ -97,3 +97,5 @@
 /Users/Mona.Jena/Workspace/Minesweeper/MinesweeperTest/obj/Debug/netcoreapp3.1/MinesweeperTest.pdb
 /Users/Mona.Jena/Workspace/Minesweeper/MinesweeperTest/obj/Debug/netcoreapp3.1/MinesweeperTest.genruntimeconfig.cache
 /Users/Mona.Jena/Workspace/Minesweeper/MinesweeperTest/bin/Debug/netcoreapp3.1/Mines.csv
+/Users/Mona.Jena/Workspace/Minesweeper/MinesweeperTest/bin/Debug/netcoreapp3.1/Castle.Core.dll
+/Users/Mona.Jena/Workspace/Minesweeper/MinesweeperTest/bin/Debug/netcoreapp3.1/Moq.dll

@@ -6,18 +6,16 @@ namespace Minesweeper
 {
     public class Game
     {
-        //get user input for grid size 
-
         public static void Main(string[] args)
         {
-            Helper helper = new Helper();
-            IEnumerable<string> fileContent = helper.ReadFile("Mines.csv");
+            var sr = new FileUtils();
+            Helper helper = new Helper(new ConsoleActions());
+            IEnumerable<string> fileContent = helper.ReadFile(sr);
             var grid = new Grid();
-            grid.BuildGrid(fileContent);
+            /*if (fileContent != null)
+            {
+                grid.BuildGrid(fileContent);
+            }*/
         }
-
-        
     }
-    
-    
 }

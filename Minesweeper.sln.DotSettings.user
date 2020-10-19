@@ -1,0 +1,16 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2f143b63_002Df434_002D45c5_002D932e_002D348827c9b218/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestIfReadFileCanReadFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::1222DA24-14CF-4D96-8E9C-DB1C8EBDC7DA::.NETCoreApp,Version=v3.1::TestProject1.HelperTests.TestIfReadFileCanReadFile&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5b4ba0a2_002D57ea_002D4806_002D989a_002Dfdca5591dd7f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestIfReadFileCanReadFile #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::1222DA24-14CF-4D96-8E9C-DB1C8EBDC7DA::.NETCoreApp,Version=v3.1::TestProject1.HelperTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6dd649a7_002D9cf2_002D4357_002D8dae_002Dfe2e8b9eb0e7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="HelperTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::1222DA24-14CF-4D96-8E9C-DB1C8EBDC7DA::.NETCoreApp,Version=v3.1::TestProject1.HelperTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

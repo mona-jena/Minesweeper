@@ -8,3 +8,6 @@
 /Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.dll
 /Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.pdb
 /Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Mines.csv
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Minesweeper.runtimeconfig.json
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/bin/Debug/netcoreapp3.1/Minesweeper.runtimeconfig.dev.json
+/Users/Mona.Jena/Workspace/Minesweeper/Minesweeper/obj/Debug/netcoreapp3.1/Minesweeper.genruntimeconfig.cache

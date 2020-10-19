@@ -14,10 +14,14 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Minesweeper" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="ConsoleActions.cs" t="Include" />
         <e p="Coordinate.cs" t="Include" />
+        <e p="FileUtils.cs" t="Include" />
         <e p="Game.cs" t="Include" />
         <e p="Grid.cs" t="Include" />
         <e p="Helper.cs" t="Include" />
+        <e p="IConsole.cs" t="Include" />
+        <e p="IFile.cs" t="Include" />
         <e p="Mines.csv" t="Include" />
         <e p="Minesweeper.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">

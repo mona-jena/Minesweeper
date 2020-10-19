@@ -7,30 +7,40 @@ namespace Minesweeper
 {
     public class Helper
     {
-        public IEnumerable<string> ReadFile(string fileName)
+        private IConsole _newConsole;
+        
+        public Helper(IConsole console)
         {
-            string fileLocation = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
+            _newConsole = console;
+        }
+
+        public IEnumerable<string> ReadFile(IFile fileUtils)
+        {
+            string fileLocation = Path.Combine(Environment.CurrentDirectory, $"Mines.csv");
             IEnumerable<string> fileContent = null;
-            
             try
             {
-                fileContent = File.ReadLines(fileLocation);
-                Console.WriteLine($"The file has been opened");
+                //fileContent = _streamReader.ReadLine(fileLocation)
+                fileContent = fileUtils.ReadLines(fileLocation);
+
+                //fileContent = File.ReadLines(fileLocation);
+                _newConsole.WriteLine($"The file has been opened");
             }
             catch (FileNotFoundException e)
             {
-                Console.WriteLine($"The file was not found: '{e}'");
+                _newConsole.WriteLine($"The file was not found: '{e}'");
             }
             catch (DirectoryNotFoundException e)
             {
-                Console.WriteLine($"The directory was not found: '{e}'");
+                _newConsole.WriteLine($"The directory was not found: '{e}'");
             }
             catch (IOException e)
             {
-                Console.WriteLine($"The file could not be opened: '{e}'");
+                _newConsole.WriteLine($"The file could not be opened: '{e}'");
             }
 
             return fileContent;
         }
+        
     }
 }

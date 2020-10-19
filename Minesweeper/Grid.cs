@@ -6,7 +6,7 @@ namespace Minesweeper
 {
     public class Grid
     {
-        public Coordinate[,] BuildGrid(IEnumerable<string> fileContent)
+        /*public Coordinate[,] BuildGrid(string fileContent)
         {
             string line1 = fileContent.First().Trim();
             
@@ -16,15 +16,15 @@ namespace Minesweeper
             Coordinate[,] gridArray = new Coordinate[rows,columns];
 
             return gridArray;
-        }
+        }*/
 
         /*public Coordinate[,] GetSurroundingMines(Coordinate[,] gridArray)
         {
-            foreach (var grid in gridArray)
+            foreach (Coordinate grid in gridArray)
             {
                 if (grid.ToString() == ".")
                 {
-                    // grid.x = grid.c
+                    grid.x = grid.c
                 }
                 else if (grid.ToString() == "*")
                 {
