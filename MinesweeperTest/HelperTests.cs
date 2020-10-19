@@ -21,7 +21,7 @@ namespace TestProject1
         } 
 
         [Fact]
-        public void TestIfReadFileCatchesExceptionWhileReadingFile()
+        public void TestIfReadFileCatchesFileNotFoundExceptionWhileReadingFile()
         {
             string fileName = "Mines.csv";
             string fileLocation = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
@@ -35,16 +35,29 @@ namespace TestProject1
             var file = new Helper(consoleActionsMock.Object);
             file.ReadFile(fileMock.Object);
 
-            consoleActionsMock.Verify(s => s.WriteLine($"The file was not found: '{e}'"), Times.Once());
-            
-            /*var actual = file.ReadFile(fileMock.Object);
-            
-            string expected = $"The file was not found:";
-     
-            Assert.Null(actual);*/
+            consoleActionsMock.Verify(s => s.WriteLine($"The file was not found: '{e}'"));
         }
-        
-        
+
+        [Fact]
+        public void TestIfReadFileCatchesDirectoryNotFoundExceptionWhileReadingFile()
+        {
+            string fileName = "Mines.csv";
+            string fileLocation = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
+            
+            var fileMock = new Mock<IFile>();
+            var consoleActionsMock = new Mock<IConsole>();
+
+            var e = new DirectoryNotFoundException();
+            fileMock.Setup(s => s.ReadLines(fileLocation))
+                .Throws(e);
+
+            var file = new Helper(consoleActionsMock.Object);
+            file.ReadFile(fileMock.Object);
+
+            consoleActionsMock.Verify(s => s.WriteLine($"The directory was not found: '{e}'"));
+        }
+
+
     }
 
     
