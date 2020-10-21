@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Minesweeper
 {
@@ -15,11 +13,10 @@ namespace Minesweeper
             var grid = new Grid();
             if (fileContent != null)
             {
-                grid.BuildGrid(fileContent);
-                grid.CreateArray(fileContent);
+                Coordinate[,] emptyGrid = grid.BuildGrid(fileContent);
+                string[,]  fileInputGrid = grid.CreateArray(fileContent);
             }
-            
-            
+
         }
     }
 }

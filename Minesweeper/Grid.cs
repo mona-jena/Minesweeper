@@ -17,7 +17,7 @@ namespace Minesweeper
              Rows = int.Parse(line1.Substring(0,1));
              Columns = int.Parse(line1.Substring(1,1));
              
-             Coordinate[,] gridArray = new Coordinate[Rows,Columns];
+             Coordinate[,] gridArray = new Coordinate[Rows,Columns];  //DELETE??
 
              return gridArray;
          }
@@ -28,29 +28,22 @@ namespace Minesweeper
              string[,] newArray = new string[Rows, Columns];
              //List<Coordinate> mineLocations = new List<Coordinate>();
              
-             /*var y = 0;
-             for (int line = 0; line < Rows; line++)
-             {
-                 var x = 0;
-                 for (int character = 0; character < Columns; character++)
-                 {
-                     newArray[x, y] = character.ToString();
-                     x++;
-                 }
-                 y++;
-             }*/
-
              var y = 0;
              foreach (var line in lines.Skip(1))
              {
                  var x = 0;
                  foreach (var character in line.Trim())
                  {
-                     newArray[x, y] = character.ToString();
-                     // if (character.ToString() == "*")
-                     // {
-                     //     //mineLocations.Add(new Coordinate(x,y));
-                     // }
+                     
+                     if (character.ToString() == "*")
+                     {
+                         //mineLocations.Add(new Coordinate(x,y));
+                         newArray[x, y] = character.ToString();
+                     }
+                     else if (character.ToString() == ".")
+                     {
+                         newArray[x, y] = "0";
+                     }
                      x++;
                  }
                  y++;

@@ -3,11 +3,10 @@ using System.IO;
 using System.Linq;
 using Minesweeper;
 using Xunit;
-using Xunit.Sdk;
 using Moq;
 using FileStream = Minesweeper.FileStream;
 
-namespace TestProject1
+namespace MinesweeperTests
 {
     public class HelperTests
     {

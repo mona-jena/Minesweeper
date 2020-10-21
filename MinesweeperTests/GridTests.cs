@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Minesweeper;
 using Xunit;
-using Xunit.Sdk;
 
-namespace TestProject1
+namespace MinesweeperTests
 {
     public class GridTests
     {
@@ -23,19 +19,17 @@ namespace TestProject1
         }
 
         [Fact]
-        public void TestIfCreateArrayReturnsArrayOfSameSizeAsInputFileGrid()
+        public void TestIfCreateArrayReturnsArrayOfSameSizeGridAsInputFileGrid()
         {
             var grid = new Grid();
             var file = new IOHandler(new ConsoleActions());
             var fileContent = file.ReadFile(new FileStream());
-            var buildGrid = grid.BuildGrid(fileContent);
+            grid.BuildGrid(fileContent);
 
             var gridArray = grid.CreateArray(fileContent);
             var length = gridArray.Length;
-
-            //int result = lowerBound * upperBound;
+            
             int expected = 16;
-
             Assert.Equal(expected, length);
         }
 
