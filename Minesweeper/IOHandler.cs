@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public class Helper
+    public class FileReader
     {
         private IConsole _newConsole;
         
-        public Helper(IConsole console)
+        public FileReader(IConsole console)
         {
             _newConsole = console;
         }
@@ -22,7 +22,7 @@ namespace Minesweeper
             {
                 //fileContent = _streamReader.ReadLine(fileLocation)
                 fileContent = fileUtils.ReadLines(fileLocation);
-
+                
                 //fileContent = File.ReadLines(fileLocation);
                 _newConsole.WriteLine($"The file has been opened");
             }
