@@ -5,7 +5,7 @@ using System.IO;
 namespace Minesweeper
 {
 
-    public class FileUtils : IFile
+    public class FileStream : IFileStream
     {
         public IEnumerable<string> ReadLines(string filePath)
         {

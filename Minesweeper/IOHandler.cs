@@ -5,16 +5,16 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public class FileReader
+    public class IOHandler
     {
         private IConsole _newConsole;
         
-        public FileReader(IConsole console)
+        public IOHandler(IConsole console)
         {
             _newConsole = console;
         }
 
-        public IEnumerable<string> ReadFile(IFile fileUtils)
+        public IEnumerable<string> ReadFile(IFileStream fileUtils)
         {
             string fileLocation = Path.Combine(Environment.CurrentDirectory, $"Mines.csv");
             IEnumerable<string> fileContent = null;

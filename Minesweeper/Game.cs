@@ -8,14 +8,18 @@ namespace Minesweeper
     {
         public static void Main(string[] args)
         {
-            var sr = new FileUtils();
-            Helper helper = new Helper(new ConsoleActions());
-            IEnumerable<string> fileContent = helper.ReadFile(sr);
+            var fileReader = new FileStream();
+            IOHandler helper = new IOHandler(new ConsoleActions());
+            IEnumerable<string> fileContent = helper.ReadFile(fileReader);
+
             var grid = new Grid();
-            /*if (fileContent != null)
+            if (fileContent != null)
             {
                 grid.BuildGrid(fileContent);
-            }*/
+                grid.CreateArray(fileContent);
+            }
+            
+            
         }
     }
 }

@@ -5,6 +5,7 @@ using Minesweeper;
 using Xunit;
 using Xunit.Sdk;
 using Moq;
+using FileStream = Minesweeper.FileStream;
 
 namespace TestProject1
 {
@@ -13,8 +14,8 @@ namespace TestProject1
         [Fact]
         public void TestIfReadFileCanReadFile()
         {
-            var file = new Helper(new ConsoleActions());
-            var actual = file.ReadFile(new FileUtils()).First().Trim();
+            var file = new IOHandler(new ConsoleActions());
+            var actual = file.ReadFile(new FileStream()).First().Trim();
             var expected = "44";
             Assert.Equal(expected, actual);
 
@@ -25,14 +26,14 @@ namespace TestProject1
         {
             string fileName = "Mines.csv";
             string fileLocation = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
-            var fileMock = new Mock<IFile>();
+            var fileMock = new Mock<IFileStream>();
             var consoleActionsMock = new Mock<IConsole>();
             
             var e = new FileNotFoundException();
             fileMock.Setup(s => s.ReadLines(fileLocation))
                 .Throws(e);
             
-            var file = new Helper(consoleActionsMock.Object);
+            var file = new IOHandler(consoleActionsMock.Object);
             file.ReadFile(fileMock.Object);
 
             consoleActionsMock.Verify(s => s.WriteLine($"The file was not found: '{e}'"));
@@ -44,22 +45,37 @@ namespace TestProject1
             string fileName = "Mines.csv";
             string fileLocation = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
             
-            var fileMock = new Mock<IFile>();
+            var fileMock = new Mock<IFileStream>();
             var consoleActionsMock = new Mock<IConsole>();
 
             var e = new DirectoryNotFoundException();
             fileMock.Setup(s => s.ReadLines(fileLocation))
                 .Throws(e);
 
-            var file = new Helper(consoleActionsMock.Object);
+            var file = new IOHandler(consoleActionsMock.Object);
             file.ReadFile(fileMock.Object);
-
             consoleActionsMock.Verify(s => s.WriteLine($"The directory was not found: '{e}'"));
         }
-
-
-    }
-
-    
         
+
+        [Fact]
+        public void TestIfReadFileCatchesIOExceptionWhileReadingFile()
+        {
+            string fileName = "Mines.csv";
+            string fileLocation = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
+            
+            var fileMock = new Mock<IFileStream>();
+            var consoleActionsMock = new Mock<IConsole>();
+
+            var e = new IOException();
+            fileMock.Setup(s => s.ReadLines(fileLocation))
+                .Throws(e);
+
+            var file = new IOHandler(consoleActionsMock.Object);
+            file.ReadFile(fileMock.Object);
+
+            consoleActionsMock.Verify(s => s.WriteLine($"The file could not be opened: '{e}'"));
+        }
+    }
+    
 }

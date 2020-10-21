@@ -4,8 +4,20 @@ namespace Minesweeper
 {
     public class Coordinate
     {
-        public string x { get; set; }
+        public override string ToString()
+        {
+            return $"x:{X}, y:{Y}";
+        }
 
-        public string y { get; set; }
+        public int X { get; set; }
+
+        public int Y { get; set; }
+
+        public Coordinate(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
     }
+    
 }

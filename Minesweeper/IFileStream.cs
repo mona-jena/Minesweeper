@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Minesweeper
 {
-    public interface IFile
+    public interface IFileStream
     {
         IEnumerable<string> ReadLines(string filePath);
     }
