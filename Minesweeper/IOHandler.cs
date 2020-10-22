@@ -19,10 +19,8 @@ namespace Minesweeper
             IEnumerable<string> fileContent = null;
             try
             {
-                //fileContent = _streamReader.ReadLine(fileLocation)
                 fileContent = fileUtils.ReadLines(fileLocation);
                 
-                //fileContent = File.ReadLines(fileLocation);
                 _newConsole.WriteLine($"The file has been opened");
             }
             catch (FileNotFoundException e)

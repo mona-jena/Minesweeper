@@ -10,7 +10,7 @@ namespace Minesweeper
         public int Columns { get; set; }
    
         
-         public Coordinate[,] BuildGrid(IEnumerable<string> fileContent)
+         /*public Coordinate[,] BuildGrid(IEnumerable<string> fileContent)
          {
              string line1 = fileContent.First().Trim();
              
@@ -20,8 +20,16 @@ namespace Minesweeper
              Coordinate[,] gridArray = new Coordinate[Rows,Columns];  //DELETE??
 
              return gridArray;
-         }
+         }*/
 
+         public void StoreGridSize(IEnumerable<string> fileContent)
+         {
+             string line1 = fileContent.First().Trim();
+             
+             Rows = int.Parse(line1.Substring(0,1));
+             Columns = int.Parse(line1.Substring(1,1));
+             
+         }
          
          public string[,] ConvertToArray(IEnumerable<string> lines)
          {
@@ -79,47 +87,47 @@ namespace Minesweeper
                          
                          if ((x - 1 >= 0) && (y - 1 >= 0))
                          {
-                             int newScore = int.Parse(noScoreArray[x - 1, y - 1]) + 1;
-                             noScoreArray[x - 1, y - 1] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x - 1, y - 1]) + 1;
+                             noScoreArray[x - 1, y - 1] = coordinateScore.ToString();
                          }
                          if (y - 1 >= 0)
                          {
-                             int newScore = int.Parse(noScoreArray[x, y - 1]) + 1;
-                             noScoreArray[x, y - 1] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x, y - 1]) + 1;
+                             noScoreArray[x, y - 1] = coordinateScore.ToString();
                          }
                          if ((x + 1 <= xUpperBound) && (y - 1 >= 0))
                          {
-                             int newScore = int.Parse(noScoreArray[x + 1, y - 1]) + 1;
-                             noScoreArray[x + 1, y - 1] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x + 1, y - 1]) + 1;
+                             noScoreArray[x + 1, y - 1] = coordinateScore.ToString();
                          }
                          if (x + 1 <= xUpperBound)
                          {
-                             int newScore = int.Parse(noScoreArray[x + 1, y]) + 1;
-                             noScoreArray[x + 1, y] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x + 1, y]) + 1;
+                             noScoreArray[x + 1, y] = coordinateScore.ToString();
                          }
 
                          if ((x + 1 <= xUpperBound) && (y + 1 <= yUpperBound))
                          {
-                             int newScore = int.Parse(noScoreArray[x + 1, y + 1]) + 1;
-                             noScoreArray[x + 1, y + 1] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x + 1, y + 1]) + 1;
+                             noScoreArray[x + 1, y + 1] = coordinateScore.ToString();
                          }
 
                          if (y + 1 <= yUpperBound)
                          {
-                             int newScore = int.Parse(noScoreArray[x, y + 1]) + 1;
-                             noScoreArray[x, y + 1] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x, y + 1]) + 1;
+                             noScoreArray[x, y + 1] = coordinateScore.ToString();
                          }
 
                          if ((x - 1 >= 0) && (y + 1 <= yUpperBound))
                          {
-                             int newScore = int.Parse(noScoreArray[x - 1, y + 1]) + 1;
-                             noScoreArray[x - 1, y + 1] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x - 1, y + 1]) + 1;
+                             noScoreArray[x - 1, y + 1] = coordinateScore.ToString();
                          }
 
                          if (x - 1 >= 0)
                          {
-                             int newScore = int.Parse(noScoreArray[x - 1, y]) + 1;
-                             noScoreArray[x - 1, y] = newScore.ToString();
+                             int coordinateScore = int.Parse(noScoreArray[x - 1, y]) + 1;
+                             noScoreArray[x - 1, y] = coordinateScore.ToString();
                          }
 
                      }
@@ -138,13 +146,14 @@ namespace Minesweeper
              return noScoreArray;
          }
 
-         public void PrintGrid(string [,] listOf2DArrays)
+         
+         public void PrintGrid(string [,] listOfCoordinates)
          {
-             for (int y = 0; y < listOf2DArrays.GetLength(1); y++)
+             for (int y = 0; y < listOfCoordinates.GetLength(1); y++)
              {
-                 for (int x = 0; x < listOf2DArrays.GetLength(0); x++)
+                 for (int x = 0; x < listOfCoordinates.GetLength(0); x++)
                  {
-                     Console.Write(listOf2DArrays[x,y] + "\t");
+                     Console.Write(listOfCoordinates[x,y]);
                  }
                  Console.WriteLine();
              }

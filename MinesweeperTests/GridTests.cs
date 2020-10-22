@@ -1,3 +1,4 @@
+using System.Threading.Tasks.Dataflow;
 using Minesweeper;
 using Xunit;
 
@@ -5,7 +6,7 @@ namespace MinesweeperTests
 {
     public class GridTests
     {
-        [Fact]
+        /*[Fact]
         public void TestIfBuildGridReturnsCorrectSizedGrid()
         {
             var grid = new Grid();
@@ -16,6 +17,21 @@ namespace MinesweeperTests
             var expected = 16;
             var result = grid.BuildGrid(fileContent).Length;
             Assert.Equal(expected, result);
+        }*/
+
+        [Fact]
+        public void TestIfStoreGridSizeStoresRowsAndColumnsValue()
+        {
+            var grid = new Grid();
+            var file = new IOHandler(new ConsoleActions());
+            var fileContent = file.ReadFile(new FileStream());
+            grid.StoreGridSize(fileContent);
+            var rowsExpected = 4;
+            var rowsResult = grid.Rows;
+            Assert.Equal(rowsExpected, rowsResult);
+            var columnExpected = 4;
+            var columnResult = grid.Columns;
+            Assert.Equal(columnExpected, columnResult);
         }
 
         [Fact]
@@ -24,7 +40,7 @@ namespace MinesweeperTests
             var grid = new Grid();
             var file = new IOHandler(new ConsoleActions());
             var fileContent = file.ReadFile(new FileStream());
-            grid.BuildGrid(fileContent);
+            grid.StoreGridSize(fileContent);
 
             var gridArray = grid.ConvertToArray(fileContent);
             var length = gridArray.Length;
@@ -39,7 +55,7 @@ namespace MinesweeperTests
             var grid = new Grid();
             var file = new IOHandler(new ConsoleActions());
             var fileContent = file.ReadFile(new FileStream());
-            grid.BuildGrid(fileContent);
+            grid.StoreGridSize(fileContent);
             var gridArray = grid.ConvertToArray(fileContent);
 
             var result = grid.AddNumbers(gridArray);
