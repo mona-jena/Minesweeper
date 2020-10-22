@@ -75,6 +75,8 @@ namespace Minesweeper
                      
                      if (value == "*")
                      {
+                         //Put in new method!!!
+                         
                          if ((x - 1 >= 0) && (y - 1 >= 0))
                          {
                              int newScore = int.Parse(noScoreArray[x - 1, y - 1]) + 1;
@@ -122,8 +124,6 @@ namespace Minesweeper
 
                      }
                      
-                     
-                     //Console.WriteLine(value);
                  }
              }
 
@@ -136,6 +136,18 @@ namespace Minesweeper
              }
              
              return noScoreArray;
+         }
+
+         public void PrintGrid(string [,] listOf2DArrays)
+         {
+             for (int y = 0; y < listOf2DArrays.GetLength(1); y++)
+             {
+                 for (int x = 0; x < listOf2DArrays.GetLength(0); x++)
+                 {
+                     Console.Write(listOf2DArrays[x,y] + "\t");
+                 }
+                 Console.WriteLine();
+             }
          }
 
     }

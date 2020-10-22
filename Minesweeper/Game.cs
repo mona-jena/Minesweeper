@@ -19,6 +19,8 @@ namespace Minesweeper
                 string[,]  fileInputGrid = grid.ConvertToArray(fileContent);
                 Console.WriteLine("\nIndicate number of mines");
                 string[,] newGrid = grid.AddNumbers(fileInputGrid);
+                Console.WriteLine("\nMatrix:");
+                grid.PrintGrid(newGrid);
             }
 
         }

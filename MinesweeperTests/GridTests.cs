@@ -34,7 +34,7 @@ namespace MinesweeperTests
         }
 
         [Fact]
-        public void TestIfAddNumbersReturnsGridWithNumbers()
+        public void TestIfAddNumbersReturnsArrayWithCorrectScore()
         {
             var grid = new Grid();
             var file = new IOHandler(new ConsoleActions());
@@ -61,7 +61,7 @@ namespace MinesweeperTests
             expectedArray[3, 1] = "0";
             expectedArray[3, 2] = "0";
             expectedArray[3, 3] = "0";
-            
+
             Assert.Equal(expectedArray, result);
 
         }
