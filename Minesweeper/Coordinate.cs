@@ -3,11 +3,6 @@ namespace Minesweeper
 {
     public class Coordinate
     {
-        public override string ToString()
-        {
-            return $"x:{X}, y:{Y}";
-        }
-
         public int X { get; set; }
 
         public int Y { get; set; }
@@ -16,6 +11,11 @@ namespace Minesweeper
         {
             X = x;
             Y = y;
+        }
+        
+        public override string ToString()
+        {
+            return $"x:{X}, y:{Y}";
         }
     }
     

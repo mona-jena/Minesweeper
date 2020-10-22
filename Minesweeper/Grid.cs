@@ -23,7 +23,7 @@ namespace Minesweeper
          }
 
          
-         public string[,] CreateArray(IEnumerable<string> lines)
+         public string[,] ConvertToArray(IEnumerable<string> lines)
          {
              string[,] newArray = new string[Rows, Columns];
              //List<Coordinate> mineLocations = new List<Coordinate>();
@@ -63,6 +63,79 @@ namespace Minesweeper
              }*/
 
              return newArray;
+         }
+
+         public string[,] AddNumbers(string[,] noScoreArray)
+         {
+             int xUpperBound = noScoreArray.GetUpperBound(0);
+             int yUpperBound = noScoreArray.GetUpperBound(1);
+             for (int x = 0; x <= xUpperBound; x++) {
+                 for (int y = 0; y <= yUpperBound; y++) {
+                     string value = noScoreArray[x, y];
+                     
+                     if (value == "*")
+                     {
+                         if ((x - 1 >= 0) && (y - 1 >= 0))
+                         {
+                             int newScore = int.Parse(noScoreArray[x - 1, y - 1]) + 1;
+                             noScoreArray[x - 1, y - 1] = newScore.ToString();
+                         }
+                         if (y - 1 >= 0)
+                         {
+                             int newScore = int.Parse(noScoreArray[x, y - 1]) + 1;
+                             noScoreArray[x, y - 1] = newScore.ToString();
+                         }
+                         if ((x + 1 <= xUpperBound) && (y - 1 >= 0))
+                         {
+                             int newScore = int.Parse(noScoreArray[x + 1, y - 1]) + 1;
+                             noScoreArray[x + 1, y - 1] = newScore.ToString();
+                         }
+                         if (x + 1 <= xUpperBound)
+                         {
+                             int newScore = int.Parse(noScoreArray[x + 1, y]) + 1;
+                             noScoreArray[x + 1, y] = newScore.ToString();
+                         }
+
+                         if ((x + 1 <= xUpperBound) && (y + 1 <= yUpperBound))
+                         {
+                             int newScore = int.Parse(noScoreArray[x + 1, y + 1]) + 1;
+                             noScoreArray[x + 1, y + 1] = newScore.ToString();
+                         }
+
+                         if (y + 1 <= yUpperBound)
+                         {
+                             int newScore = int.Parse(noScoreArray[x, y + 1]) + 1;
+                             noScoreArray[x, y + 1] = newScore.ToString();
+                         }
+
+                         if ((x - 1 >= 0) && (y + 1 <= yUpperBound))
+                         {
+                             int newScore = int.Parse(noScoreArray[x - 1, y + 1]) + 1;
+                             noScoreArray[x - 1, y + 1] = newScore.ToString();
+                         }
+
+                         if (x - 1 >= 0)
+                         {
+                             int newScore = int.Parse(noScoreArray[x - 1, y]) + 1;
+                             noScoreArray[x - 1, y] = newScore.ToString();
+                         }
+
+                     }
+                     
+                     
+                     //Console.WriteLine(value);
+                 }
+             }
+
+             for (int i = 0; i < Rows; i++)
+             {
+                 for (int j = 0; j < Columns; j++)
+                 {
+                     Console.WriteLine("[{0},{1}] = {2}", i, j, noScoreArray[i, j]);
+                 }
+             }
+             
+             return noScoreArray;
          }
 
     }

@@ -17,7 +17,6 @@ namespace MinesweeperTests
             var actual = file.ReadFile(new FileStream()).First().Trim();
             var expected = "44";
             Assert.Equal(expected, actual);
-
         } 
 
         [Fact]
