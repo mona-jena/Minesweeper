@@ -17,7 +17,6 @@ namespace Minesweeper
              
              Rows = int.Parse(line1.Substring(0,1));
              Columns = int.Parse(line1.Substring(1,1));
-             
          }
          
          public string[,] ConvertToArray(IEnumerable<string> lines)
@@ -51,11 +50,6 @@ namespace Minesweeper
                      Debug.WriteLine("[{0},{1}] = {2}", i, j, newArray[i, j]);
                  }
              }
-
-             /*for (int i = 0; i < mineLocations.Count; i++)
-             {
-                 Console.WriteLine(mineLocations[i]);
-             }*/
 
              return newArray;
          }

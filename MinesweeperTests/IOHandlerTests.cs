@@ -8,7 +8,7 @@ using FileStream = Minesweeper.FileStream;
 
 namespace MinesweeperTests
 {
-    public class HelperTests
+    public class IOHandlerTests
     {
         [Fact]
         public void TestIfReadFileCanReadFile()
