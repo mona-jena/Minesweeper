@@ -26,9 +26,11 @@ namespace MinesweeperTests
             var file = new IOHandler(new ConsoleActions());
             var fileContent = file.ReadFile(new FileStream());
             grid.StoreGridSize(fileContent);
+            
             var rowsExpected = 4;
             var rowsResult = grid.Rows;
             Assert.Equal(rowsExpected, rowsResult);
+            
             var columnExpected = 4;
             var columnResult = grid.Columns;
             Assert.Equal(columnExpected, columnResult);
@@ -78,8 +80,15 @@ namespace MinesweeperTests
             expectedArray[3, 2] = "0";
             expectedArray[3, 3] = "0";
 
+           var x =  
+                "*100\n" +
+                "2210\n" +
+                "1*10\n" +
+                "1110\n";
+
             Assert.Equal(expectedArray, result);
 
         }
+        
     }
 }

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 
 namespace Minesweeper
 {
-    public class Game
+    public class Program
     {
         public static void Main(string[] args)
         {
-            var fileReader = new FileStream();
             IOHandler fileHandler = new IOHandler(new ConsoleActions());
-            IEnumerable<string> fileContent = fileHandler.ReadFile(fileReader);
+            IEnumerable<string> fileContent = fileHandler.ReadFile(new FileStream());
 
             var grid = new Grid();
             if (fileContent != null)
@@ -21,7 +20,7 @@ namespace Minesweeper
                 Console.WriteLine("\nIndicate number of mines:");
                 string[,] newGrid = grid.AddNumbers(fileInputGrid);
                 Console.WriteLine("\nField #1:");
-                grid.PrintGrid(newGrid);
+                Console.WriteLine(grid.PrintGrid(newGrid));
             }
 
         }
