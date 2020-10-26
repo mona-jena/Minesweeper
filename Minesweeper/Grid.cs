@@ -9,7 +9,15 @@ namespace Minesweeper
     {
         public int Rows { get; set; }
         public int Columns { get; set; }
-        
+
+        /*private string[,] _gridArray = new string[Rows, Columns];
+
+        private string[,] GridArray
+        {
+            get { return _gridArray; }   
+            set { _gridArray = value; }
+        }*/
+
 
         public void StoreGridSize(IEnumerable<string> fileContent)
          {
@@ -114,7 +122,6 @@ namespace Minesweeper
                      }
                  }
              }
-             
 
              for (int i = 0; i < Rows; i++)
              {

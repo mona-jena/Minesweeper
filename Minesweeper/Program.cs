@@ -13,7 +13,6 @@ namespace Minesweeper
             var grid = new Grid();
             if (fileContent != null)
             {
-                //Coordinate[,] emptyGrid = grid.BuildGrid(fileContent);
                 grid.StoreGridSize(fileContent);
                 Console.WriteLine("\nConvert file into 2d array:");
                 string[,]  fileInputGrid = grid.ConvertToArray(fileContent);
