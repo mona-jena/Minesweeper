@@ -52,7 +52,7 @@ namespace MinesweeperTests
         } 
         
         [Fact]
-        public void CheckIfThereIsCorrectScoreWithOneMineInTheMiddle()
+        public void ScoresAllAroundPerimeterWhenOneMineInTheMiddle()
         {
             var fileContent = new[]
             {
@@ -72,7 +72,7 @@ namespace MinesweeperTests
         } 
         
         [Fact]
-        public void CheckIfThereIsCorrectScoreWithMinesAllOnThePerimeter()
+        public void ScoreOnlyInMiddleWhenMinesAllAroundThePerimeter()
         {
             var fileContent = new[]
             {
@@ -88,6 +88,83 @@ namespace MinesweeperTests
             var result = grid.PrintGrid();
 
             var expected = "***\n" + "*8*\n" + "***\n";
+            Assert.Equal(expected, result);
+        } 
+        
+        [Fact]
+        public void AllScoreAreZeroWhenThereAreNoMinesFor2X2Grid()
+        {
+            var fileContent = new[]
+            {
+                "22\n",
+                "..\n",
+                "..\n"
+            };
+            
+            var grid = new Grid();
+            grid.StoreGridSize(fileContent);
+
+            var result = grid.PrintGrid();
+
+            var expected = "00\n" + "00\n";
+            Assert.Equal(expected, result);
+
+        } 
+        
+        [Fact]
+        public void NoScoresWhenThereAreAllMinesFor2X2Grid()
+        {
+            var fileContent = new[]
+            {
+                "22\n",
+                "**\n",
+                "**\n"
+            };
+            
+            var grid = new Grid();
+            grid.StoreGridSize(fileContent);
+
+            var result = grid.PrintGrid();
+
+            var expected = "**\n" + "**\n";
+            Assert.Equal(expected, result);
+        } 
+        
+        [Fact]
+        public void ScoresAllAroundPerimeterWhenOneMineInACornerIn2X2Grid()
+        {
+            var fileContent = new[]
+            {
+                "22\n",
+                ".*\n",
+                "..\n"
+            };
+            
+            var grid = new Grid();
+            grid.StoreGridSize(fileContent);
+
+            var result = grid.PrintGrid();
+
+            var expected = "1*\n" + "11\n";
+            Assert.Equal(expected, result);
+        } 
+        
+        [Fact]
+        public void ScoreOnlyInOneCornerWhenMinesAllAroundThePerimeterIn2X2Grid()
+        {
+            var fileContent = new[]
+            {
+                "22\n",
+                "**\n",
+                "*.\n"
+            };
+            
+            var grid = new Grid();
+            grid.StoreGridSize(fileContent);
+
+            var result = grid.PrintGrid();
+
+            var expected = "**\n" + "*3\n";
             Assert.Equal(expected, result);
         } 
         
