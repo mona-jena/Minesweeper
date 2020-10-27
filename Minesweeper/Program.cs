@@ -15,11 +15,11 @@ namespace Minesweeper
             {
                 grid.StoreGridSize(fileContent);
                 Console.WriteLine("\nConvert file into 2d array:");
-                string[,]  fileInputGrid = grid.ConvertToArray(fileContent);
+                grid.ConvertToArray(fileContent);
                 Console.WriteLine("\nIndicate number of mines:");
-                string[,] newGrid = grid.AddNumbers(fileInputGrid);
+               // string[,] newGrid = grid.AddNumbers();
                 Console.WriteLine("\nField #1:");
-                Console.WriteLine(grid.PrintGrid(newGrid));
+                Console.WriteLine(grid.PrintGrid());
             }
 
         }
