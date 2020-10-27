@@ -19,7 +19,7 @@ namespace Minesweeper
              
              Rows = int.Parse(line1.Substring(0,1));
              Columns = int.Parse(line1.Substring(1,1));
-             GridArray = new string[Rows, Columns];
+             GridArray = new string[Columns, Rows];
              ConvertToArray(fileContent);
              AddNumbers();
          }
@@ -49,7 +49,7 @@ namespace Minesweeper
              {
                  for (int j = 0; j < Columns; j++)
                  {
-                     Debug.WriteLine("[{0},{1}] = {2}", i, j, GridArray[i, j]);
+                     Debug.WriteLine("[{0},{1}] = {2}", i, j, GridArray[j, i]);
                  }
              }
              
@@ -152,7 +152,7 @@ namespace Minesweeper
              {
                  for (int j = 0; j < Columns; j++)
                  {
-                     Debug.WriteLine("[{0},{1}] = {2}", i, j, GridArray[i, j]);
+                     Debug.WriteLine("[{0},{1}] = {2}", j, i, GridArray[j, i]);
                  }
              }
              

@@ -168,6 +168,44 @@ namespace MinesweeperTests
             Assert.Equal(expected, result);
         } 
         
+        [Fact]
+        public void CheckIfCorrectScoreIfAllMinesAreDifferentSizeColumnAndRow()
+        {
+            var fileContent = new[]
+            {
+                "35\n",
+                "**...\n",
+                ".....\n",
+                "**...\n"
+            };
+            
+            var grid = new Grid();
+            grid.StoreGridSize(fileContent);
+
+            var result = grid.PrintGrid();
+
+            var expected = "**100\n" + "44200\n" + "**100\n";
+            Assert.Equal(expected, result);
+        } 
+        
+        [Fact]
+        public void ReturnEmptyStringIfRowsAndColumnsAreZero()
+        {
+            var fileContent = new[]
+            {
+                "00\n"
+            };
+            
+            var grid = new Grid();
+            grid.StoreGridSize(fileContent);
+
+            var result = grid.PrintGrid();
+
+            var expected = "";
+            Assert.Equal(expected, result);
+        } 
+        
+        
     }
     
 }
