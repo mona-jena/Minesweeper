@@ -1,10 +1,5 @@
-using System;
-using System.IO;
-using System.Linq;
 using Minesweeper;
 using Xunit;
-using Moq;
-using FileStream = Minesweeper.FileStream;
 
 namespace MinesweeperTests
 {
@@ -21,8 +16,7 @@ namespace MinesweeperTests
                 "...\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -42,8 +36,7 @@ namespace MinesweeperTests
                 "***\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -62,8 +55,7 @@ namespace MinesweeperTests
                 "...\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -82,8 +74,7 @@ namespace MinesweeperTests
                 "***\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -101,8 +92,7 @@ namespace MinesweeperTests
                 "..\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -121,8 +111,7 @@ namespace MinesweeperTests
                 "**\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -140,8 +129,7 @@ namespace MinesweeperTests
                 "..\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -159,8 +147,7 @@ namespace MinesweeperTests
                 "*.\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -179,8 +166,7 @@ namespace MinesweeperTests
                 "**...\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 
@@ -196,8 +182,7 @@ namespace MinesweeperTests
                 "00\n"
             };
             
-            var grid = new Grid();
-            grid.StoreGridSize(fileContent);
+            var grid = new Grid(fileContent);
 
             var result = grid.PrintGrid();
 

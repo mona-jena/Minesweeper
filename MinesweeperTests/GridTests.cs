@@ -10,10 +10,9 @@ namespace MinesweeperTests
         [Fact]
         public void TestIfPrintGridReturnsArrayWithCorrectScoreAndCorrectMatrixFormat()
         {
-            Grid grid = new Grid();
             var fileContent = File.ReadAllLines("Mines.csv");
-            grid.StoreGridSize(fileContent);
-
+            var grid = new Grid(fileContent);
+            
             var result = grid.PrintGrid();
 
             var expected =

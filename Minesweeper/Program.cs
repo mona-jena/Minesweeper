@@ -3,19 +3,20 @@ using System.Collections.Generic;
 
 namespace Minesweeper
 {
-    public class Program
+    
+    public static class Program
     {
         public static void Main(string[] args)
         {
-            IOHandler fileHandler = new IOHandler(new ConsoleActions());
+            var fileHandler = new IOHandler(new ConsoleActions());
             IEnumerable<string> fileContent = fileHandler.ReadFile(new FileStream());
 
-            var grid = new Grid();
+            var grid = new Grid(fileContent);
             if (fileContent != null)
             {
-                grid.StoreGridSize(fileContent);
+                //grid.StoreGridSize(fileContent);
                 Console.WriteLine("\nConvert file into 2d array:");
-                grid.ConvertToArray(fileContent);
+                //grid.ConvertToArray(fileContent);
                 Console.WriteLine("\nIndicate number of mines:");
                // string[,] newGrid = grid.AddNumbers();
                 Console.WriteLine("\nField #1:");
