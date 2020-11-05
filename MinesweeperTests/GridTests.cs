@@ -7,7 +7,7 @@ namespace MinesweeperTests
     public class GridTests
     {
         
-        [Fact]
+        /*[Fact]
         public void TestIfPrintGridReturnsArrayWithCorrectScoreAndCorrectMatrixFormat()
         {
             var fileContent = File.ReadAllLines("Mines.csv");
@@ -23,7 +23,13 @@ namespace MinesweeperTests
 
             Assert.Equal(expected, result);
 
-        }
+        }*/
+
+        /*[Fact]
+        public void TestIfMultipleGridsAreReadInSeperately()
+        {
+            var fi
+        }*/
         
     }
 }

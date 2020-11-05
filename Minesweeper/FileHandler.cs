@@ -1,25 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Minesweeper
 {
-    public class IOHandler
+    
+    public class FileHandler : IIoHandler
     {
         private readonly IConsole _newConsole;
         
-        public IOHandler(IConsole console)
+        public FileHandler(IConsole console)
         {
             _newConsole = console;
         }
 
-        public IEnumerable<string> ReadFile(IFileStream fileUtils)
+        public IList<string> ReadFile(IFileStream fileUtils)
         {
             string fileLocation = Path.Combine(Environment.CurrentDirectory, $"Mines.csv");
             IEnumerable<string> fileContent = fileUtils.ReadLines(fileLocation);
             _newConsole.WriteLine($"The file has been opened");
 
-            return fileContent;
+            return fileContent.ToList();
         }
         
     }

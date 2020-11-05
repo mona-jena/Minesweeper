@@ -1,22 +1,39 @@
+using System.Collections.Generic;
+using System.Linq;
 using Minesweeper;
 using Xunit;
 
 namespace MinesweeperTests
 {
+    public class TestIoReader: IIoHandler
+    {
+        private readonly IEnumerable<string> _gridText;
+
+        public TestIoReader(IEnumerable<string> gridText)
+        {
+            _gridText = gridText;
+        }
+        public IList<string> ReadFile(IFileStream fileUtils)
+        {
+            return _gridText.ToList();
+        }
+    }
+    
     public class ScoreCalculatorTests
     {
         [Fact]
         public void AllScoreAreZeroWhenThereAreNoMines()
         {
-            var fileContent = new[]
+            IEnumerable<string> fileContent = new[]
             {
                 "33\n",
                 "...\n",
                 "...\n",
                 "...\n"
             };
-            
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -36,7 +53,9 @@ namespace MinesweeperTests
                 "***\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -55,7 +74,9 @@ namespace MinesweeperTests
                 "...\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -74,7 +95,9 @@ namespace MinesweeperTests
                 "***\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -92,7 +115,9 @@ namespace MinesweeperTests
                 "..\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -111,7 +136,9 @@ namespace MinesweeperTests
                 "**\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -129,7 +156,9 @@ namespace MinesweeperTests
                 "..\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -147,7 +176,9 @@ namespace MinesweeperTests
                 "*.\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -166,7 +197,9 @@ namespace MinesweeperTests
                 "**...\n"
             };
             
-            var grid = new Grid(fileContent);
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
 
             var result = grid.PrintGrid();
 
@@ -182,8 +215,10 @@ namespace MinesweeperTests
                 "00\n"
             };
             
-            var grid = new Grid(fileContent);
-
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
+            
             var result = grid.PrintGrid();
 
             var expected = "";
@@ -191,6 +226,58 @@ namespace MinesweeperTests
         } 
         
         
+        [Fact]
+        public void MultipleGridsWith0X0GridShouldBeHandled()
+        {
+            IEnumerable<string> fileContent = new[]
+            {
+                "33\n",
+                "...\n",
+                "...\n",
+                "...\n",
+                "\n",
+                "00\n"
+                
+            };
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
+
+            var result = grid.PrintGrid();
+
+            var expected = "000\n" + "000\n" + "000\n";
+            Assert.Equal(expected, result);
+
+        } 
+        
+        [Fact]
+        public void MultipleGridsShouldBeHandled()
+        {
+            IEnumerable<string> fileContent = new[]
+            {
+                "33\n",
+                "...\n",
+                "...\n",
+                "...\n",
+                "\n",
+                "12\n",
+                "*1"
+                
+                
+            };
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
+
+            var result = grid.PrintGrid();
+
+            var expected = "000\n" + "000\n" + "000\n" + "\n" + "*1\n";
+            Assert.Equal(expected, result);
+
+        } 
+        
+        
     }
     
+
 }
