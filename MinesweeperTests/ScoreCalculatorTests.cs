@@ -37,7 +37,8 @@ namespace MinesweeperTests
 
             var result = grid.PrintGrid();
 
-            var expected = "000\n" + "000\n" + "000\n";
+            var expectedString = "000\n" + "000\n" + "000\n";
+            var expected = new List<string>() {expectedString};
             Assert.Equal(expected, result);
 
         } 
@@ -58,8 +59,8 @@ namespace MinesweeperTests
             grid.Run();
 
             var result = grid.PrintGrid();
-
-            var expected = "***\n" + "***\n" + "***\n";
+            var expectedString = "***\n" + "***\n" + "***\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -80,7 +81,8 @@ namespace MinesweeperTests
 
             var result = grid.PrintGrid();
 
-            var expected = "111\n" + "1*1\n" + "111\n";
+            var expectedString = "111\n" + "1*1\n" + "111\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -101,7 +103,8 @@ namespace MinesweeperTests
 
             var result = grid.PrintGrid();
 
-            var expected = "***\n" + "*8*\n" + "***\n";
+            var expectedString = "***\n" + "*8*\n" + "***\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -118,10 +121,11 @@ namespace MinesweeperTests
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "00\n" + "00\n";
+            var expectedString = "00\n" + "00\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
 
         } 
@@ -139,10 +143,11 @@ namespace MinesweeperTests
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "**\n" + "**\n";
+            var expectedString = "**\n" + "**\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -159,10 +164,11 @@ namespace MinesweeperTests
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "1*\n" + "11\n";
+            var expectedString = "1*\n" + "11\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -179,10 +185,11 @@ namespace MinesweeperTests
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "**\n" + "*3\n";
+            var expectedString = "**\n" + "*3\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -200,10 +207,11 @@ namespace MinesweeperTests
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "**100\n" + "44200\n" + "**100\n";
+            var expectedString = "**100\n" + "44200\n" + "**100\n";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -221,7 +229,8 @@ namespace MinesweeperTests
             
             var result = grid.PrintGrid();
 
-            var expected = "";
+            var expectedString = "";
+            var expected = new List<string>() { expectedString};
             Assert.Equal(expected, result);
         } 
         
@@ -242,10 +251,12 @@ namespace MinesweeperTests
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "000\n" + "000\n" + "000\n";
+            var expectedString1 = "000\n" + "000\n" + "000\n";
+            var expectedString2 = "";
+            var expected = new List<string>() { expectedString1, expectedString2};
             Assert.Equal(expected, result);
 
         } 
@@ -261,21 +272,53 @@ namespace MinesweeperTests
                 "...\n",
                 "\n",
                 "12\n",
-                "*1"
-                
-                
+                "*.\n"
+
             };
             var ioReader = new TestIoReader(fileContent);
             var grid = new Grid(ioReader);
             grid.Run();
-
+            
             var result = grid.PrintGrid();
 
-            var expected = "000\n" + "000\n" + "000\n" + "\n" + "*1\n";
+            var expectedString1 = "000\n" + "000\n" + "000\n";
+            var expectedString2 = "*1\n";
+            var expected = new List<string>() { expectedString1, expectedString2};
             Assert.Equal(expected, result);
 
         } 
         
+        [Fact]
+        public void MultipleGrids3X3ShouldBeHandled()
+        {
+            IEnumerable<string> fileContent = new[]
+            {
+                "33\n",
+                "...\n",
+                "...\n",
+                "...\n",
+                "\n",
+                "12\n",
+                "*.\n",
+                "\n",
+                "33\n",
+                "..*\n",
+                "...\n",
+                "**.\n"
+            };
+            var ioReader = new TestIoReader(fileContent);
+            var grid = new Grid(ioReader);
+            grid.Run();
+            
+            var result = grid.PrintGrid();
+
+            var expectedString1 = "000\n" + "000\n" + "000\n";
+            var expectedString2 = "*1\n";
+            var expectedString3 = "01*\n" + "232\n" + "**1\n";
+            var expected = new List<string>() { expectedString1, expectedString2, expectedString3};
+            Assert.Equal(expected, result);
+
+        } 
         
     }
     

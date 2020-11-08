@@ -12,6 +12,11 @@ namespace Minesweeper
         private int XMax { get; set; }
 
         private string[,] _gridArray;
+        
+        //private string output;
+
+        private List<string> _listOfGrids = new List<string>();
+
 
         public Grid(IIoHandler fileHandler)
         {
@@ -21,9 +26,33 @@ namespace Minesweeper
         public void Run()
         {
             var fileContent = _fileHandler.ReadFile(new FileStream());
-            StoreGridSize(fileContent);
-            ConvertToArray(fileContent);
+            var grid = new List<string>();
+
+            //output = "";
+            foreach(var line in fileContent)
+            {
+                if ( line == "\n")
+                {
+                    //output += CreateMatrix(grid);
+                    _listOfGrids.Add(CreateMatrix(grid));
+                    grid.Clear();
+                    continue;
+                }
+
+                grid.Add(line);
+            }
+
+            //output += CreateMatrix(grid);
+            _listOfGrids.Add(CreateMatrix(grid));
+            
+        }
+
+        private string CreateMatrix(List<string> grid)
+        {
+            StoreGridSize(grid);
+            ConvertToArray(grid);
             UpdateGridWithScore();
+            return GridToString();
         }
 
         private void StoreGridSize(IEnumerable<string> fileContent)
@@ -53,32 +82,10 @@ namespace Minesweeper
 
                         _gridArray[y, x++] = newCharacter;
                     }
+
                     y++;
                 }
             }
-
-
-
-
-            /*var allLines = lines.ToList();
-            for (int i = 1; i <= YMax; i++)
-            {
-                var x = 0;
-                foreach (var character in allLines[i].Trim())
-                {
-                    var newCharacter = "0";
-                    if (character.ToString() == "*")
-                    {
-                        newCharacter = character.ToString();
-                    }
-
-                    _gridArray[y, x++] = newCharacter;
-                }
-
-                i++;
-                y++;
-                Console.WriteLine("LOOPED");
-            }*/
             
         }
 
@@ -122,7 +129,7 @@ namespace Minesweeper
         }
 
 
-        public string PrintGrid()
+        private string GridToString()
         {
             string matrixGrid = "";
             for (int x = 0; x < _gridArray.GetLength(0); x++)
@@ -134,8 +141,14 @@ namespace Minesweeper
 
                 matrixGrid += "\n";
             }
-
+            
             return matrixGrid;
+        }
+        
+        public List<string> PrintGrid()
+        {
+            return _listOfGrids;
+            
         }
     }
 }

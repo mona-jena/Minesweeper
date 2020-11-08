@@ -9,11 +9,11 @@ namespace Minesweeper
         {
             var fileHandler = new FileHandler(new ConsoleActions());
             var fileContent = fileHandler.ReadFile(new FileStream());
-            var gridSeparator = new GridSeparator(fileContent);
-            gridSeparator.SeperateEachGrid();
+            // var gridSeparator = new GridSeparator(fileContent);
+            // gridSeparator.SeperateEachGrid();
             
-            // var grid = new Grid(null);
-            // grid.Run();
+            var grid = new Grid(null);
+            grid.Run();
             
             //grid.StoreGridSize(fileContent);
             Console.WriteLine("\nConvert file into 2d array:");

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +20,8 @@ namespace Minesweeper
                 var isNumber = int.TryParse(line.Substring(0), out int result);
                 if (isNumber)
                 {
-                    var grid = new Grid(null);
+                    var grid = new Grid(line);
+                    
                     grid.Run();
                 }
             }
@@ -28,4 +29,4 @@ namespace Minesweeper
         
         
     }
-}
+}*/
