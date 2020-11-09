@@ -1,58 +1,23 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace Minesweeper
 {
     public class Grid
     {
-        private readonly IIoHandler _fileHandler;
+        private string[,] _gridArray;
+        
+
         private int YMax { get; set; }
         private int XMax { get; set; }
 
-        private string[,] _gridArray;
-        
-        //private string output;
-
-        private List<string> _listOfGrids = new List<string>();
-
-
-        public Grid(IIoHandler fileHandler)
-        {
-            _fileHandler = fileHandler ?? throw new ArgumentException(nameof(fileHandler));
-        }
-
-        public void Run()
-        {
-            var fileContent = _fileHandler.ReadFile(new FileStream());
-            var grid = new List<string>();
-
-            //output = "";
-            foreach(var line in fileContent)
-            {
-                if ( line == "\n")
-                {
-                    //output += CreateMatrix(grid);
-                    _listOfGrids.Add(CreateMatrix(grid));
-                    grid.Clear();
-                    continue;
-                }
-
-                grid.Add(line);
-            }
-
-            //output += CreateMatrix(grid);
-            _listOfGrids.Add(CreateMatrix(grid));
-            
-        }
-
-        private string CreateMatrix(List<string> grid)
+        public string[,] Build(List<string> grid)
         {
             StoreGridSize(grid);
             ConvertToArray(grid);
             UpdateGridWithScore();
-            return GridToString();
+            return _gridArray;
+            
         }
 
         private void StoreGridSize(IEnumerable<string> fileContent)
@@ -68,7 +33,7 @@ namespace Minesweeper
             var y = 0;
             foreach (var line in lines)
             {
-                var isNumber = int.TryParse(line.Substring(0), out int result);
+                var isNumber = int.TryParse(line.Substring(0), out var _);
                 if (!isNumber)
                 {
                     var x = 0;
@@ -118,37 +83,14 @@ namespace Minesweeper
         {
             List<(int y, int x)> neighbours = new List<(int, int)>();
             var validXs = new List<int> {xAxis - 1, xAxis, xAxis + 1}.Where(x => x >= 0 && x < XMax);
-            var validYs = new List<int> {yAxis - 1, yAxis, yAxis + 1}.Where(y => y >= 0 && y < YMax);
-
+            var validYs = new List<int> {yAxis - 1, yAxis, yAxis + 1}.Where(y => y >= 0 && y < YMax).ToList();
+            
             foreach (var x in validXs)
             foreach (var y in validYs)
                 neighbours.Add((y, x));
 
             neighbours.Remove((yAxis, xAxis));
             return neighbours;
-        }
-
-
-        private string GridToString()
-        {
-            string matrixGrid = "";
-            for (int x = 0; x < _gridArray.GetLength(0); x++)
-            {
-                for (int y = 0; y < _gridArray.GetLength(1); y++)
-                {
-                    matrixGrid += _gridArray[x, y];
-                }
-
-                matrixGrid += "\n";
-            }
-            
-            return matrixGrid;
-        }
-        
-        public List<string> PrintGrid()
-        {
-            return _listOfGrids;
-            
         }
     }
 }

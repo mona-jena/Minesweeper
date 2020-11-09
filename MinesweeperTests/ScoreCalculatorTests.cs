@@ -32,13 +32,12 @@ namespace MinesweeperTests
                 "...\n"
             };
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
 
             var result = grid.PrintGrid();
 
-            var expectedString = "000\n" + "000\n" + "000\n";
-            var expected = new List<string>() {expectedString};
+            var expected = "000\n" + "000\n" + "000\n";
             Assert.Equal(expected, result);
 
         } 
@@ -55,12 +54,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
 
             var result = grid.PrintGrid();
-            var expectedString = "***\n" + "***\n" + "***\n";
-            var expected = new List<string>() { expectedString};
+
+            var expected = "***\n" + "***\n" + "***\n";
             Assert.Equal(expected, result);
         } 
         
@@ -76,13 +75,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
 
             var result = grid.PrintGrid();
 
-            var expectedString = "111\n" + "1*1\n" + "111\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "111\n" + "1*1\n" + "111\n";
             Assert.Equal(expected, result);
         } 
         
@@ -98,13 +96,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
 
             var result = grid.PrintGrid();
 
-            var expectedString = "***\n" + "*8*\n" + "***\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "***\n" + "*8*\n" + "***\n";
             Assert.Equal(expected, result);
         } 
         
@@ -119,13 +116,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString = "00\n" + "00\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "00\n" + "00\n";
             Assert.Equal(expected, result);
 
         } 
@@ -141,13 +137,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString = "**\n" + "**\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "**\n" + "**\n";
             Assert.Equal(expected, result);
         } 
         
@@ -162,13 +157,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString = "1*\n" + "11\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "1*\n" + "11\n";
             Assert.Equal(expected, result);
         } 
         
@@ -183,13 +177,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString = "**\n" + "*3\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "**\n" + "*3\n";
             Assert.Equal(expected, result);
         } 
         
@@ -205,13 +198,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString = "**100\n" + "44200\n" + "**100\n";
-            var expected = new List<string>() { expectedString};
+            var expected = "**100\n" + "44200\n" + "**100\n";
             Assert.Equal(expected, result);
         } 
         
@@ -224,13 +216,12 @@ namespace MinesweeperTests
             };
             
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString = "";
-            var expected = new List<string>() { expectedString};
+            var expected = "";
             Assert.Equal(expected, result);
         } 
         
@@ -249,14 +240,12 @@ namespace MinesweeperTests
                 
             };
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString1 = "000\n" + "000\n" + "000\n";
-            var expectedString2 = "";
-            var expected = new List<string>() { expectedString1, expectedString2};
+            var expected = "000\n" + "000\n" + "000\n";
             Assert.Equal(expected, result);
 
         } 
@@ -276,14 +265,12 @@ namespace MinesweeperTests
 
             };
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString1 = "000\n" + "000\n" + "000\n";
-            var expectedString2 = "*1\n";
-            var expected = new List<string>() { expectedString1, expectedString2};
+            var expected = "000\n" + "000\n" + "000\n" + "*1\n";
             Assert.Equal(expected, result);
 
         } 
@@ -307,15 +294,12 @@ namespace MinesweeperTests
                 "**.\n"
             };
             var ioReader = new TestIoReader(fileContent);
-            var grid = new Grid(ioReader);
+            var grid = new GridSeparator(ioReader);
             grid.Run();
             
             var result = grid.PrintGrid();
 
-            var expectedString1 = "000\n" + "000\n" + "000\n";
-            var expectedString2 = "*1\n";
-            var expectedString3 = "01*\n" + "232\n" + "**1\n";
-            var expected = new List<string>() { expectedString1, expectedString2, expectedString3};
+            var expected = "000\n" + "000\n" + "000\n" + "*1\n" + "01*\n" + "232\n" + "**1\n";
             Assert.Equal(expected, result);
 
         } 

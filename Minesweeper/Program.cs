@@ -12,7 +12,7 @@ namespace Minesweeper
             // var gridSeparator = new GridSeparator(fileContent);
             // gridSeparator.SeperateEachGrid();
             
-            var grid = new Grid(null);
+            var grid = new GridSeparator(fileHandler);
             grid.Run();
             
             //grid.StoreGridSize(fileContent);
