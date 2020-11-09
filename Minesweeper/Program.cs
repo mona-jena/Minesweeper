@@ -13,7 +13,7 @@ namespace Minesweeper
             
             allGrids.Run();
             
-            Console.WriteLine(allGrids.PrintGrid());
+            //Console.WriteLine(allGrids.PrintGrid());
             
         }
     }

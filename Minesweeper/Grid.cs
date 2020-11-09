@@ -49,7 +49,6 @@ namespace Minesweeper
                     y++;
                 }
             }
-            
         }
 
         private void UpdateGridWithScore()
@@ -89,6 +88,22 @@ namespace Minesweeper
 
             neighbours.Remove((yAxis, xAxis));
             return neighbours;
+        }
+        
+        public string GridToString(string[,] gridArray)
+        {
+            string matrixGrid = "";
+            for (int x = 0; x < gridArray.GetLength(0); x++)
+            {
+                for (int y = 0; y < gridArray.GetLength(1); y++)
+                {
+                    matrixGrid += gridArray[x, y];
+                }
+
+                matrixGrid += "\n";
+            }
+            
+            return matrixGrid;
         }
     }
 }

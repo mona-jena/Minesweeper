@@ -32,10 +32,12 @@ namespace Minesweeper
                 gridLines.Add(line);
             }
             _listOfGrids.Add(grid.Build(gridLines));
+
+            PrintGrid(grid);
         }
 
 
-        private string GridToString(string[,] gridArray)
+        /*private string GridToString(string[,] gridArray)
         {
             string matrixGrid = "";
             for (int x = 0; x < gridArray.GetLength(0); x++)
@@ -49,12 +51,12 @@ namespace Minesweeper
             }
             
             return matrixGrid;
-        }
+        }*/
         
-        public string PrintGrid()
+        
+        public string PrintGrid(Grid grid)
         {
-            //var listOfGridStrings = _listOfGrids.Select(GridToString);
-            return string.Join("\n",_listOfGrids.Select(GridToString));
+            return string.Join("\n",_listOfGrids.Select(grid.GridToString));
         }
     }
 }
