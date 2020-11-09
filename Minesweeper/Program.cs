@@ -8,20 +8,13 @@ namespace Minesweeper
         public static void Main(string[] args)
         {
             var fileHandler = new FileHandler(new ConsoleActions());
-            var fileContent = fileHandler.ReadFile(new FileStream());
-            // var gridSeparator = new GridSeparator(fileContent);
-            // gridSeparator.SeperateEachGrid();
+
+            var allGrids = new GridSeparator(fileHandler);
             
-            var grid = new GridSeparator(fileHandler);
-            grid.Run();
+            allGrids.Run();
             
-            //grid.StoreGridSize(fileContent);
-            Console.WriteLine("\nConvert file into 2d array:");
-            //grid.ConvertToArray(fileContent);
-            Console.WriteLine("\nIndicate number of mines:");
-            // string[,] newGrid = grid.AddNumbers();
-            Console.WriteLine("\nField #1:");
-           // Console.WriteLine(grid.PrintGrid());
+            Console.WriteLine(allGrids.PrintGrid());
+            
         }
     }
     

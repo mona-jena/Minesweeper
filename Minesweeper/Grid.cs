@@ -6,7 +6,6 @@ namespace Minesweeper
     public class Grid
     {
         private string[,] _gridArray;
-        
 
         private int YMax { get; set; }
         private int XMax { get; set; }
@@ -17,7 +16,6 @@ namespace Minesweeper
             ConvertToArray(grid);
             UpdateGridWithScore();
             return _gridArray;
-            
         }
 
         private void StoreGridSize(IEnumerable<string> fileContent)

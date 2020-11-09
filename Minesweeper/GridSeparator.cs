@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Minesweeper
 {
@@ -15,7 +13,6 @@ namespace Minesweeper
         public GridSeparator(IIoHandler fileHandler)
         {
             _fileHandler = fileHandler ?? throw new ArgumentException(nameof(fileHandler));
-
         }
 
         public void Run()
@@ -25,7 +22,7 @@ namespace Minesweeper
             var grid = new Grid();
             foreach(var line in fileContent)
             {
-                if ( line == "\n")
+                if ( line == "")
                 {
                     _listOfGrids.Add(grid.Build(gridLines));
                     gridLines.Clear();
@@ -56,8 +53,8 @@ namespace Minesweeper
         
         public string PrintGrid()
         {
-            var listOfGridStrings = _listOfGrids.Select(GridToString);
-            return string.Join("",listOfGridStrings);
+            //var listOfGridStrings = _listOfGrids.Select(GridToString);
+            return string.Join("\n",_listOfGrids.Select(GridToString));
         }
     }
 }

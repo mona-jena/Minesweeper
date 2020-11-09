@@ -235,7 +235,7 @@ namespace MinesweeperTests
                 "...\n",
                 "...\n",
                 "...\n",
-                "\n",
+                "",
                 "00\n"
                 
             };
@@ -245,7 +245,7 @@ namespace MinesweeperTests
             
             var result = grid.PrintGrid();
 
-            var expected = "000\n" + "000\n" + "000\n";
+            var expected = "000\n" + "000\n" + "000\n" + "\n";
             Assert.Equal(expected, result);
 
         } 
@@ -259,7 +259,7 @@ namespace MinesweeperTests
                 "...\n",
                 "...\n",
                 "...\n",
-                "\n",
+                "",
                 "12\n",
                 "*.\n"
 
@@ -270,7 +270,8 @@ namespace MinesweeperTests
             
             var result = grid.PrintGrid();
 
-            var expected = "000\n" + "000\n" + "000\n" + "*1\n";
+            var expected = "000\n" + "000\n" + "000\n" + "\n" +
+                           "*1\n";
             Assert.Equal(expected, result);
 
         } 
@@ -284,10 +285,10 @@ namespace MinesweeperTests
                 "...\n",
                 "...\n",
                 "...\n",
-                "\n",
+                "",
                 "12\n",
                 "*.\n",
-                "\n",
+                "",
                 "33\n",
                 "..*\n",
                 "...\n",
@@ -299,7 +300,9 @@ namespace MinesweeperTests
             
             var result = grid.PrintGrid();
 
-            var expected = "000\n" + "000\n" + "000\n" + "*1\n" + "01*\n" + "232\n" + "**1\n";
+            var expected = "000\n" + "000\n" + "000\n" + "\n" + 
+                           "*1\n" + "\n" +
+                           "01*\n" + "232\n" + "**1\n";
             Assert.Equal(expected, result);
 
         } 
