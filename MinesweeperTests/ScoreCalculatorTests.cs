@@ -1,25 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using Minesweeper;
 using Xunit;
 
 namespace MinesweeperTests
 {
-    public class TestIoReader : IIoHandler
-    {
-        private readonly IEnumerable<string> _gridText;
-
-        public TestIoReader(IEnumerable<string> gridText)
-        {
-            _gridText = gridText;
-        }
-
-        public IList<string> ReadFile(IFileStream fileUtils)
-        {
-            return _gridText.ToList();
-        }
-    }
-
     public class ScoreCalculatorTests
     {
         [Fact]
@@ -32,7 +16,7 @@ namespace MinesweeperTests
                 "...",
                 "..."
             };
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -53,7 +37,7 @@ namespace MinesweeperTests
                 "***"
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -74,7 +58,7 @@ namespace MinesweeperTests
                 "..."
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -95,7 +79,7 @@ namespace MinesweeperTests
                 "***"
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -115,7 +99,7 @@ namespace MinesweeperTests
                 ".."
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -135,7 +119,7 @@ namespace MinesweeperTests
                 "**"
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -155,7 +139,7 @@ namespace MinesweeperTests
                 ".."
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -175,7 +159,7 @@ namespace MinesweeperTests
                 "*."
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -196,7 +180,7 @@ namespace MinesweeperTests
                 "**..."
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -214,7 +198,7 @@ namespace MinesweeperTests
                 "00"
             };
 
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -237,7 +221,7 @@ namespace MinesweeperTests
                 "",
                 "00"
             };
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -261,7 +245,7 @@ namespace MinesweeperTests
                 "12",
                 "*."
             };
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 
@@ -291,7 +275,7 @@ namespace MinesweeperTests
                 "...",
                 "**."
             };
-            var ioReader = new TestIoReader(fileContent);
+            var ioReader = new TestReader(fileContent);
             var grid = new GridSeparator(ioReader);
             grid.Run();
 

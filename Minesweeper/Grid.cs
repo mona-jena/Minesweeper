@@ -10,7 +10,7 @@ namespace Minesweeper
         private int YMax { get; set; }
         private int XMax { get; set; }
         
-        private List<string> _listOfStrings = new List<string>();
+        private readonly List<string> _listOfStrings = new List<string>();
 
         public void AddLine(string line)
         {
@@ -51,7 +51,6 @@ namespace Minesweeper
 
                         _gridArray[y, x++] = newCharacter;
                     }
-
                     y++;
                 }
             }
@@ -85,7 +84,7 @@ namespace Minesweeper
         private List<(int y, int x)> GetNeighbours(int yAxis, int xAxis)
         {
             List<(int y, int x)> neighbours = new List<(int, int)>();
-            var validXs = new List<int> {xAxis - 1, xAxis, xAxis + 1}.Where(x => x >= 0 && x < XMax);
+            var validXs = new List<int> {xAxis - 1, xAxis, xAxis + 1}.Where(x => x >= 0 && x < XMax).ToList();
             var validYs = new List<int> {yAxis - 1, yAxis, yAxis + 1}.Where(y => y >= 0 && y < YMax).ToList();
 
             foreach (var y in validYs)

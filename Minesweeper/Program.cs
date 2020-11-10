@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Minesweeper
 {
@@ -6,7 +7,8 @@ namespace Minesweeper
     {
         public static void Main()
         {
-            var fileHandler = new FileHandler(new ConsoleActions());
+            string fileLocation = Path.Combine(Environment.CurrentDirectory, "Mines.csv");
+            var fileHandler = new FileReader(fileLocation);
 
             var gridSeparator = new GridSeparator(fileHandler);
             gridSeparator.Run();

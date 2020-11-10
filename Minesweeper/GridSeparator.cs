@@ -6,18 +6,18 @@ namespace Minesweeper
 {
     public class GridSeparator
     {
-        private readonly IIoHandler _fileHandler;
+        private readonly IReader _fileHandler;
 
         private readonly List<Grid> _listOfGrids = new List<Grid>();
 
-        public GridSeparator(IIoHandler fileHandler)
+        public GridSeparator(IReader fileHandler)
         {
             _fileHandler = fileHandler ?? throw new ArgumentException(nameof(fileHandler));
         }
 
         public void Run()
         {
-            var fileContent = _fileHandler.ReadFile(new FileStream());
+            var fileContent = _fileHandler.Read();
             var grid = new Grid();
             _listOfGrids.Add(grid);
             
