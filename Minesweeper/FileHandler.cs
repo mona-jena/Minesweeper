@@ -17,9 +17,9 @@ namespace Minesweeper
 
         public IList<string> ReadFile(IFileStream fileUtils)
         {
-            string fileLocation = Path.Combine(Environment.CurrentDirectory, $"Mines.csv");
+            string fileLocation = Path.Combine(Environment.CurrentDirectory, "Mines.csv");
             IEnumerable<string> fileContent = fileUtils.ReadLines(fileLocation).ToList();
-            _newConsole.WriteLine($"The file has been opened");
+            _newConsole.WriteLine("The file has been opened");
 
             return fileContent.ToList();
         }

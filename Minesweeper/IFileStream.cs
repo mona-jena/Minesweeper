@@ -7,8 +7,4 @@ namespace Minesweeper
         IEnumerable<string> ReadLines(string filePath);
     }
 
-    
-        
-
-
 }

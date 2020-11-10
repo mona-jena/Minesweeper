@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Minesweeper
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var fileHandler = new FileHandler(new ConsoleActions());
 
-            var allGrids = new GridSeparator(fileHandler);
+            var gridSeparator = new GridSeparator(fileHandler);
+            gridSeparator.Run();
             
-            allGrids.Run();
-            
-            //Console.WriteLine(allGrids.PrintGrid());
+            Console.WriteLine(gridSeparator.PrintGrid());
             
         }
     }

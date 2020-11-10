@@ -9,13 +9,19 @@ namespace Minesweeper
 
         private int YMax { get; set; }
         private int XMax { get; set; }
+        
+        private List<string> _listOfStrings = new List<string>();
 
-        public string[,] Build(List<string> grid)
+        public void AddLine(string line)
         {
-            StoreGridSize(grid);
-            ConvertToArray(grid);
+            _listOfStrings.Add(line);
+        }
+
+        private void Build()
+        {
+            StoreGridSize(_listOfStrings);
+            ConvertToArray(_listOfStrings);
             UpdateGridWithScore();
-            return _gridArray;
         }
 
         private void StoreGridSize(IEnumerable<string> fileContent)
@@ -81,29 +87,32 @@ namespace Minesweeper
             List<(int y, int x)> neighbours = new List<(int, int)>();
             var validXs = new List<int> {xAxis - 1, xAxis, xAxis + 1}.Where(x => x >= 0 && x < XMax);
             var validYs = new List<int> {yAxis - 1, yAxis, yAxis + 1}.Where(y => y >= 0 && y < YMax).ToList();
-            
-            foreach (var x in validXs)
+
             foreach (var y in validYs)
+            foreach (var x in validXs)
                 neighbours.Add((y, x));
 
             neighbours.Remove((yAxis, xAxis));
             return neighbours;
         }
         
-        public string GridToString(string[,] gridArray)
+        public string GridToString()
         {
+            Build();
             string matrixGrid = "";
-            for (int x = 0; x < gridArray.GetLength(0); x++)
+            for (int y = 0; y < _gridArray.GetLength(0); y++)
             {
-                for (int y = 0; y < gridArray.GetLength(1); y++)
+                for (int x = 0; x < _gridArray.GetLength(1); x++)
                 {
-                    matrixGrid += gridArray[x, y];
+                    matrixGrid += _gridArray[y, x];
                 }
 
                 matrixGrid += "\n";
             }
             
-            return matrixGrid;
+            return matrixGrid.Trim();
         }
+        
+        
     }
 }

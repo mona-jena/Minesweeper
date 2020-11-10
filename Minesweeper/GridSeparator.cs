@@ -8,7 +8,7 @@ namespace Minesweeper
     {
         private readonly IIoHandler _fileHandler;
 
-        private readonly List<string[,]> _listOfGrids = new List<string[,]>();
+        private readonly List<Grid> _listOfGrids = new List<Grid>();
 
         public GridSeparator(IIoHandler fileHandler)
         {
@@ -18,45 +18,27 @@ namespace Minesweeper
         public void Run()
         {
             var fileContent = _fileHandler.ReadFile(new FileStream());
-            var gridLines = new List<string>();
             var grid = new Grid();
+            _listOfGrids.Add(grid);
+            
             foreach(var line in fileContent)
             {
                 if ( line == "")
                 {
-                    _listOfGrids.Add(grid.Build(gridLines));
-                    gridLines.Clear();
+                    grid = new Grid();
+                    _listOfGrids.Add(grid);
                     continue;
                 }
-
-                gridLines.Add(line);
+                grid.AddLine(line);
             }
-            _listOfGrids.Add(grid.Build(gridLines));
 
-            PrintGrid(grid);
+            PrintGrid();
         }
 
 
-        /*private string GridToString(string[,] gridArray)
+        public string PrintGrid()
         {
-            string matrixGrid = "";
-            for (int x = 0; x < gridArray.GetLength(0); x++)
-            {
-                for (int y = 0; y < gridArray.GetLength(1); y++)
-                {
-                    matrixGrid += gridArray[x, y];
-                }
-
-                matrixGrid += "\n";
-            }
-            
-            return matrixGrid;
-        }*/
-        
-        
-        public string PrintGrid(Grid grid)
-        {
-            return string.Join("\n",_listOfGrids.Select(grid.GridToString));
+            return string.Join("\n\n",_listOfGrids.Select(g => g.GridToString()));
         }
     }
 }
