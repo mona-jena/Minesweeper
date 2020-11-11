@@ -8,12 +8,12 @@ namespace Minesweeper
         public static void Main()
         {
             string fileLocation = Path.Combine(Environment.CurrentDirectory, "Mines.csv");
-            var fileHandler = new FileReader(fileLocation);
+            var fileReader = new FileReader(fileLocation);
 
-            var gridSeparator = new GridSeparator(fileHandler);
-            gridSeparator.Run();
+            var minefieldScorer = new MinefieldScorer(fileReader);
+            minefieldScorer.Run();
             
-            Console.WriteLine(gridSeparator.PrintGrid());
+            Console.WriteLine(minefieldScorer.PrintMinefield());
             
         }
     }

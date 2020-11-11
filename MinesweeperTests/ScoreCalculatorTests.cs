@@ -17,10 +17,10 @@ namespace MinesweeperTests
                 "..."
             };
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "000\n" + "000\n" + "000";
             Assert.Equal(expected, result);
@@ -38,10 +38,10 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "***\n" + "***\n" + "***";
             Assert.Equal(expected, result);
@@ -59,10 +59,10 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "111\n" + "1*1\n" + "111";
             Assert.Equal(expected, result);
@@ -80,17 +80,17 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "***\n" + "*8*\n" + "***";
             Assert.Equal(expected, result);
         }
 
         [Fact]
-        public void AllScoreAreZeroWhenThereAreNoMinesFor2X2Grid()
+        public void AllScoreAreZeroWhenThereAreNoMinesFor2X2Minefield()
         {
             var fileContent = new[]
             {
@@ -100,17 +100,17 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "00\n" + "00";
             Assert.Equal(expected, result);
         }
 
         [Fact]
-        public void NoScoresWhenThereAreAllMinesFor2X2Grid()
+        public void NoScoresWhenThereAreAllMinesFor2X2Minefield()
         {
             var fileContent = new[]
             {
@@ -120,17 +120,17 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "**\n" + "**";
             Assert.Equal(expected, result);
         }
 
         [Fact]
-        public void ScoresAllAroundPerimeterWhenOneMineInACornerIn2X2Grid()
+        public void ScoresAllAroundPerimeterWhenOneMineInACornerIn2X2Minefield()
         {
             var fileContent = new[]
             {
@@ -140,17 +140,17 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "1*\n" + "11";
             Assert.Equal(expected, result);
         }
 
         [Fact]
-        public void ScoreOnlyInOneCornerWhenMinesAllAroundThePerimeterIn2X2Grid()
+        public void ScoreOnlyInOneCornerWhenMinesAllAroundThePerimeterIn2X2Minefield()
         {
             var fileContent = new[]
             {
@@ -160,10 +160,10 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "**\n" + "*3";
             Assert.Equal(expected, result);
@@ -181,10 +181,10 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "**100\n" + "44200\n" + "**100";
             Assert.Equal(expected, result);
@@ -199,10 +199,10 @@ namespace MinesweeperTests
             };
 
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = "";
             Assert.Equal(expected, result);
@@ -210,7 +210,7 @@ namespace MinesweeperTests
 
 
         [Fact]
-        public void MultipleGridsWith0X0GridShouldBeHandled()
+        public void MultipleMinefieldsWith0X0MinefieldShouldBeHandled()
         {
             IEnumerable<string> fileContent = new[]
             {
@@ -222,18 +222,23 @@ namespace MinesweeperTests
                 "00"
             };
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
-            var expected = "000\n" + "000\n" + "000\n" +
-                           "\n";
-            Assert.Equal(expected, result);
+            var expected = new[]
+            {
+                "000", 
+                "000", 
+                "000",
+                "\n"
+            };
+            Assert.Equal(string.Join("\n",expected), result);
         }
 
         [Fact]
-        public void MultipleGridsShouldBeHandled()
+        public void MultipleMinefieldsShouldBeHandled()
         {
             IEnumerable<string> fileContent = new[]
             {
@@ -246,19 +251,24 @@ namespace MinesweeperTests
                 "*."
             };
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
-            var expected = "000\n" + "000\n" + "000\n" +
-                           "\n" +
-                           "*1";
-            Assert.Equal(expected, result);
+            var expected = new[]
+            { 
+                "000", 
+                "000", 
+                "000",
+                "",
+                "*1"
+            };
+            Assert.Equal(string.Join("\n",expected), result);
         }
 
         [Fact]
-        public void MultipleGrids3X3ShouldBeHandled()
+        public void MultipleMinefields3X3ShouldBeHandled()
         {
             IEnumerable<string> fileContent = new[]
             {
@@ -276,10 +286,10 @@ namespace MinesweeperTests
                 "**."
             };
             var ioReader = new TestReader(fileContent);
-            var grid = new GridSeparator(ioReader);
-            grid.Run();
+            var minefieldScorer = new MinefieldScorer(ioReader);
+            minefieldScorer.Run();
 
-            var result = grid.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected = new[]
             {

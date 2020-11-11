@@ -24,4 +24,10 @@
       <Compile Remove="GridTests.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="*.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

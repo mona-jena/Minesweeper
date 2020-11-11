@@ -1,24 +1,23 @@
 using System;
 using System.IO;
-using System.Linq;
 using Minesweeper;
 using Xunit;
 
 namespace MinesweeperTests
 {
-    public class GridTests
+    public class MinefieldTests
     {
         
         [Fact]
-        public void FileReaderShouldBeAbleToOpenAndReadFileAndReturnFinalGrids()
+        public void FileReaderShouldBeAbleToOpenAndReadFileAndReturnFinalMinefields()
         {
             string fileLocation = Path.Combine(Environment.CurrentDirectory, "Mines.csv");
             var fileHandler = new FileReader(fileLocation);
 
-            var gridSeparator = new GridSeparator(fileHandler);
-            gridSeparator.Run();
+            var minefieldScorer = new MinefieldScorer(fileHandler);
+            minefieldScorer.Run();
             
-            var result = gridSeparator.PrintGrid();
+            var result = minefieldScorer.PrintMinefield();
 
             var expected =
                 "*100\n" +
@@ -35,5 +34,55 @@ namespace MinesweeperTests
         }
         
         
+        [Fact]
+        public void FileReaderShouldBeAbleToOpenAndReadFileAndReturnFinalMinefieldsWithMines2()
+        {
+            string filePath = Path.Combine(Environment.CurrentDirectory, "Mines2.csv");
+            var fileHandler = new FileReader(filePath);
+
+            var minefieldScorer = new MinefieldScorer(fileHandler);
+            minefieldScorer.Run();
+            
+            var result = minefieldScorer.PrintMinefield();
+
+            var expected = "\n" +
+                           "\n" +
+                           "**\n" +
+                           "33\n" +
+                           "2*\n" +
+                           "*2\n" +
+                           "11\n" +
+                           "11\n" +
+                           "*1\n" +
+                           "\n" +
+                           "\n" +
+                           "\n"
+            ;
+
+            Assert.Equal(expected, result);
+        }
+        
+        [Fact]
+        public void FileReaderShouldBeAbleToOpenAndReadFileAndReturnFinalMinefieldsWithSingleMinefield()
+        {
+            string fileLocation = Path.Combine(Environment.CurrentDirectory, "SingleMinefield.csv");
+            var fileHandler = new FileReader(fileLocation);
+
+            var minefieldScorer = new MinefieldScorer(fileHandler);
+            minefieldScorer.Run();
+            
+            var result = minefieldScorer.PrintMinefield();
+
+            var expected =
+                "*100\n" +     
+                "2210\n" +
+                "1*10\n" +
+                "1110";
+
+            Assert.Equal(expected, result);
+        }
+        
     }
-}
+}                  
+
+                                                

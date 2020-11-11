@@ -8,7 +8,14 @@
 
     <ItemGroup>
       <None Remove="Mines.csv" />
+      <None Remove="Mines2.csv" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Include="Mines.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Mines2.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

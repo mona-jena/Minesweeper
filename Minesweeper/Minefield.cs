@@ -3,33 +3,27 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public class Grid
+    internal class Minefield
     {
-        private string[,] _gridArray;
+        private string[,] _minefieldArray;
 
         private int YMax { get; set; }
         private int XMax { get; set; }
         
-        private readonly List<string> _listOfStrings = new List<string>();
+        private readonly List<string> _stringMinefield = new List<string>();
 
         public void AddLine(string line)
         {
-            _listOfStrings.Add(line);
+            _stringMinefield.Add(line);
         }
+        
 
-        private void Build()
-        {
-            StoreGridSize(_listOfStrings);
-            ConvertToArray(_listOfStrings);
-            UpdateGridWithScore();
-        }
-
-        private void StoreGridSize(IEnumerable<string> fileContent)
+        private void StoreMinefieldSize(IEnumerable<string> fileContent)
         {
             string line1 = fileContent.First().Trim();
             YMax = int.Parse(line1.Substring(0, 1));
             XMax = int.Parse(line1.Substring(1, 1));
-            _gridArray = new string[YMax, XMax];
+            _minefieldArray = new string[XMax, YMax];
         }
 
         private void ConvertToArray(IEnumerable<string> lines)
@@ -49,67 +43,74 @@ namespace Minesweeper
                             newCharacter = character.ToString();
                         }
 
-                        _gridArray[y, x++] = newCharacter;
+                        _minefieldArray[x++, y] = newCharacter;
                     }
                     y++;
                 }
             }
         }
 
-        private void UpdateGridWithScore()
+        private void UpdateMinefieldWithScore()
         {
             for (int y = 0; y < YMax; y++)
             {
                 for (int x = 0; x < XMax; x++)
                 {
-                    if (_gridArray[y, x] == "*")
+                    if (_minefieldArray[x, y] == "*")
                     {
-                        CalculateScore(y, x);
+                        CalculateScore(x, y);
                     }
                 }
             }
         }
 
-        private void CalculateScore(int y, int x)
+        private void CalculateScore(int x, int y)
         {
-            foreach (var (i, i1) in GetNeighbours(y, x))
+            foreach (var (i, i1) in GetNeighbours(x, y))
             {
-                if (int.TryParse(_gridArray[i, i1], out var number))
+                if (int.TryParse(_minefieldArray[i, i1], out var number))
                 {
-                    _gridArray[i, i1] = (number + 1).ToString();
+                    _minefieldArray[i, i1] = (number + 1).ToString();
                 }
             }
         }
 
-        private List<(int y, int x)> GetNeighbours(int yAxis, int xAxis)
+        private List<(int x, int y)> GetNeighbours(int xAxis, int yAxis)
         {
-            List<(int y, int x)> neighbours = new List<(int, int)>();
+            List<(int x, int y)> neighbours = new List<(int, int)>();
             var validXs = new List<int> {xAxis - 1, xAxis, xAxis + 1}.Where(x => x >= 0 && x < XMax).ToList();
             var validYs = new List<int> {yAxis - 1, yAxis, yAxis + 1}.Where(y => y >= 0 && y < YMax).ToList();
 
             foreach (var y in validYs)
             foreach (var x in validXs)
-                neighbours.Add((y, x));
+                neighbours.Add((x, y));
 
-            neighbours.Remove((yAxis, xAxis));
+            neighbours.Remove((xAxis, yAxis));
             return neighbours;
         }
         
-        public string GridToString()
+        public string MinefieldArrayToString()
         {
             Build();
-            string matrixGrid = "";
-            for (int y = 0; y < _gridArray.GetLength(0); y++)
+            string matrixMinefield = "";
+            for (int y = 0; y < _minefieldArray.GetLength(1); y++)
             {
-                for (int x = 0; x < _gridArray.GetLength(1); x++)
+                for (int x = 0; x < _minefieldArray.GetLength(0); x++)
                 {
-                    matrixGrid += _gridArray[y, x];
+                    matrixMinefield += _minefieldArray[x, y];
                 }
 
-                matrixGrid += "\n";
+                matrixMinefield += "\n";
             }
             
-            return matrixGrid.Trim();
+            return matrixMinefield.Trim();
+        }
+        
+        private void Build()
+        {
+            StoreMinefieldSize(_stringMinefield);
+            ConvertToArray(_stringMinefield);
+            UpdateMinefieldWithScore();
         }
         
         

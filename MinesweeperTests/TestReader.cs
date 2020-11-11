@@ -6,16 +6,16 @@ namespace MinesweeperTests
 {
     public class TestReader : IReader
     {
-        private readonly IEnumerable<string> _gridText;
+        private readonly IEnumerable<string> _minefieldText;
 
-        public TestReader(IEnumerable<string> gridText)
+        public TestReader(IEnumerable<string> minefieldText)
         {
-            _gridText = gridText;
+            _minefieldText = minefieldText;
         }
 
         public IList<string> Read()
         {
-            return _gridText.ToList();
+            return _minefieldText.ToList();
         }
     }
 }
